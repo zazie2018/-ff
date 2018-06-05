@@ -1,4 +1,3 @@
-package stanford_1;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,31 +7,39 @@ import java.util.Scanner;
 
 
 public class CreateTriple {
-	private String texte;
+	private String texte="";
+	private String asp;
+	private ArrayList<String> liste;
+	private String noun;
+	private ArrayList<String> ls;
 	private String type;
-	private ArrayList<Aspect> asp;
-	
-	public CreateTriple() throws IOException{
-		this.type=type;
+	private String senti;
+	public CreateTriple() throws IOException, InterruptedException{
+		
 		Scanner fr=new Scanner(new FileReader("trial.txt"));
 		while(fr.hasNext()){
-		texte=fr.nextLine();
-		asp = new ArrayList<Aspect>();
-		for(Aspect aspect:asp){
-	     aspect.getAspect();
-		 aspect.getSenti();
-		
+	     texte+=fr.nextLine()+"--";
 		}
-	}
+		System.out.println(texte);
+		asp=AspectMain.getAsp();
+		noun =AspectMain.getnoun().get(0);
+		senti=AspectMain.getSent();					
+				
 }
 	
-public String getTexte(){
-	return texte;
+public String[] getTexte(){
+	return texte.split("--");
 }
-public String getType(){
-	return type;
+public String[] getAsp(){
+	return asp.split(" ");
+}
+public String getType() throws IOException {
+	
+	return noun;
 	}
-public String getSentiments(){
-	return asp.toString();
+public String[] getSentis(){
+	return senti.split(" ");
 }
+
+	
 }
